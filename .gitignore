@@ -1,0 +1,13 @@
+# IDE
+*.iml
+*.classpath
+.idea/
+.settings/
+.project
+
+# Dir
+logs/
+target/
+
+# OS
+.DS_Store

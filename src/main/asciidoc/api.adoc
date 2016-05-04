@@ -1,0 +1,153 @@
+= Spotippos API
+Marcos Barbero
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+[introduction]
+= Introduction
+It's a RESTful API manage Spotippos' Reign. To consume follow the steps below.
+
+[[overview]]
+= Overview
+
+[[overview-http-verbs]]
+== HTTP Verbs
+The Spotippos' API tries to adhere as closely as possible to standard HTTP and REST conventions in its use of HTTP verbs.
+|===
+| Verb | Usage
+
+| `GET`
+| Used to retrieve one or more resources
+
+| `POST`
+| Used to create a resource
+
+|===
+
+[[overview-http-status-codes]]
+== HTTP Status Codes
+|===
+| Status code | Usage
+
+| `200 OK`
+| Standard response for successful HTTP requests. +
+The actual response will depend on the request method used. +
+In a GET request, the response will contain an entity corresponding to the requested resource. +
+
+| `201 Created`
+| The request has been fulfilled, resulting in the creation of a new resource.
+
+| `400 Bad Request`
+| The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message or parameter).
+
+| `404 Not Found`
+| The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible.
+
+| `422 Unprocessable Entity`
+| Means the server understands the content type of the request entity, and the syntax of the request entity is correct, +
+but was unable to process the contained instructions. +
+For example, this error condition may occur if an JSON request body contains well-formed (i.e., syntactically correct), +
+but semantically erroneous, JSON content.
+
+| `5xx Server Error`
+|  Indicate cases in which the server is aware that it has encountered an error or is otherwise incapable of performing the request.
+
+|===
+
+[[production-ready]]
+= Production ready
+|===
+This API is built in http://projects.spring.io/spring-boot/[Spring Boot]. To make Ops work easier we put together some production ready endpoints from https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html[Spring Boot Actuator].
+
+To consume those endpoints take a look at the link:/manage/docs/[Docs].
+|===
+
+[[resources]]
+= Resources
+
+
+[[resources-property]]
+== Property
+The resource containing all the information about Properties
+
+[[resource-spotippos-property-get-one]]
+=== Get a single resource
+A `GET` request recovery a Property from path
+include::{snippets}/test-get-by-id/path-parameters.adoc[]
+include::{snippets}/test-get-by-id/http-request.adoc[]
+
+==== Request
+include::{snippets}/test-get-by-id/curl-request.adoc[]
+
+==== Response
+
+===== Headers
+include::{snippets}/test-get-by-id/response-headers.adoc[]
+
+===== Fields
+include::{snippets}/test-get-by-id/response-fields.adoc[]
+
+===== Body
+include::{snippets}/test-get-by-id/http-response.adoc[]
+
+==== Error
+
+===== Resource not found
+include::{snippets}/test-get-by-not-found-id/http-response.adoc[]
+
+[[resource-spotippos-property-get-list]]
+=== Get a list by region
+A `GET` request to recover a list of Properties
+include::{snippets}/test-get-by-region/http-request.adoc[]
+include::{snippets}/test-get-by-region/request-parameters.adoc[]
+
+==== Request
+include::{snippets}/test-get-by-region/curl-request.adoc[]
+
+==== Response
+
+===== Headers
+include::{snippets}/test-get-by-region/response-headers.adoc[]
+
+===== Fields
+include::{snippets}/test-get-by-region/response-fields.adoc[]
+
+===== Body
+include::{snippets}/test-get-by-region/http-response.adoc[]
+
+==== Error
+
+===== Resource not found
+include::{snippets}/test-get-by-region-not-found/http-response.adoc[]
+
+===== Bad request
+All request parameters are required in case of any of them is missing the following error will be thrown.
+include::{snippets}/test-get-by-region-bad-request/http-response.adoc[]
+
+[[resource-spotippos-property-post]]
+=== Post a resource
+A 'POST' request creates a new Property
+include::{snippets}/test-post/http-request.adoc[]
+include::{snippets}/test-post/request-fields.adoc[]
+
+==== Request
+include::{snippets}/test-post/curl-request.adoc[]
+
+
+==== Response
+
+===== Headers
+include::{snippets}/test-post/response-headers.adoc[]
+include::{snippets}/test-post/http-response.adoc[]
+
+==== Error
+
+===== Unprocessable Entity
+include::{snippets}/test-post-unprocessable-entity/http-response.adoc[]
+
+===== Bad Request
+include::{snippets}/test-post-bad-request/http-response.adoc[]

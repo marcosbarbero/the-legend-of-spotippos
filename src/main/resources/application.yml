@@ -1,0 +1,20 @@
+info:
+  build.artifact: '@project.artifactId@'
+  application.version: '@project.version@'
+
+datamass:
+  resources:
+    provinces: 'classpath:datamass/provinces.json'
+    properties: 'classpath:datamass/properties.json'
+
+spring:
+  jackson.serialization.indent_output: true
+  h2.console:
+    enabled: true
+    path: /console
+  jpa:
+    hibernate:
+      format_sql: true
+    show-sql: false
+
+management.context-path: /manage

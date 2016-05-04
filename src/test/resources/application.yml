@@ -1,0 +1,10 @@
+datamass:
+  resources:
+    provinces: 'classpath:datamass/provinces.json'
+    properties: 'classpath:datamass/properties.json'
+
+spring:
+  jpa:
+    hibernate:
+      format_sql: true
+    show-sql: true
