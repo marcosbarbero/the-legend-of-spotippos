@@ -56,7 +56,7 @@ public class ResponseExceptionHandler {
         fieldErrors.forEach(fieldError -> fieldErrorResources.add(FieldErrorResourceDTO.build(fieldError)));
         ErrorResourceDTO error = errorResource("InvalidRequest", ire.getMessage());
         error.setFieldErrors(fieldErrorResources);
-        logger.error("[INVALID REQUEST] Error: {}", error.toString());
+        logger.warn("[INVALID REQUEST] Error: {}", error.toString());
         return sendResponse(error, HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
