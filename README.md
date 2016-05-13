@@ -16,7 +16,7 @@ This project was built with the following technologies:
 Adding Project Lombok Agent
 ---
 
-Spotippos project uses http://projectlombok.org/features/index.html[Project Lombok]
+Spotippos project uses [http://projectlombok.org/features/index.html](Project Lombok)
 to generate getters and setters etc. Compiling from the command line this
 shouldn't cause any problems, but in an IDE you need to add an agent
 to the JVM. Full instructions can be found in the Lombok website. The
